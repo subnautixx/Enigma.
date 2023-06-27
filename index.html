@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Irasienqmlen Enigmas</title>
+    <style>
+        body {
+            background-color: #181818;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        h1, p {
+            padding: 20px;
+            background-color: rgba(33, 33, 33, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px 3px rgba(0, 255, 0, 0.5);
+        }
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 15px;
+            border: 2px solid #008CBA;
+        }
+        button:hover {
+            background-color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+        .resposta {
+            display: none;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0px 0px 10px 3px rgba(0, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao enigmático site de irasienqmlen</h1>
+    <p>Um membro da ADFDB e do VTLive.</p>
+    <button onclick="exibirEnigma1()" id="botaoEnigma1">Clique aqui para o primeiro enigma</button>
+    <button onclick="exibirEnigma2()" id="botaoEnigma2" style="display: none;">Clique aqui para o segundo enigma</button>
+    <button onclick="exibirEnigma3()" id="botaoEnigma3" style="display: none;">Clique aqui para o terceiro enigma</button>
+    <div class="resposta" id="mensagemErro1">
+        <h2>Confetes!</h2>
+        <p>Você errou! Tente novamente.</p>
+    </div>
+    <div class="resposta" id="mensagemCorreta1">
+        <h2>Parabéns!</h2>
+        <p>Você acertou o primeiro enigma!</p>
+    </div>
+    <div class="resposta" id="mensagemErro2">
+        <h2>Confetes!</h2>
+        <p>Você errou! Tente novamente.</p>
+    </div>
+    <div class="resposta" id="mensagemCorreta2">
+        <h2>Parabéns!</h2>
+        <p>Você acertou o segundo enigma!</p>
+    </div>
+    <div class="resposta" id="mensagemErro3">
+        <h2>Confetes!</h2>
+        <p>Você errou! Tente novamente.</p>
+    </div>
+    <div class="resposta" id="mensagemCorreta3">
+        <h2>Parabéns!</h2>
+        <p>Você acertou o terceiro enigma!</p>
+    </div>
+    <div class="resposta" id="mensagemFinal" style="display: none;">
+        <h2>Parabéns!</h2>
+        <p>Você acertou todos os enigmas! Irasienqmlen está feliz contigo, peça a ele a recompensa.</p>
+    </div>
+    <script>
+        var tentativas = 0;
+
+        function exibirEnigma1() {
+            var resposta = prompt("Responda a este enigma: Qual é a palavra que, quando pronunciada, silencia para sempre?");
+            if (resposta.toLowerCase() !== "silêncio") {
+                tentativas++;
+                verificarTentativas();
+                document.getElementById("mensagemErro1").style.display = "block";
+                document.getElementById("mensagemCorreta1").style.display = "none";
+            } else {
+                document.getElementById("mensagemCorreta1").style.display = "block";
+                document.getElementById("mensagemErro1").style.display = "none";
+                document.getElementById("botaoEnigma1").style.display = "none";
+                document.getElementById("botaoEnigma2").style.display = "inline-block";
+            }
+        }
+        
+        function exibirEnigma2() {
+            var resposta = prompt("Responda a este enigma: O que é que quanto mais se tira mais se tem?");
+            if (resposta.toLowerCase() !== "buraco") {
+                tentativas++;
+                verificarTentativas();
+                document.getElementById("mensagemErro2").style.display = "block";
+                document.getElementById("mensagemCorreta2").style.display = "none";
+            } else {
+                document.getElementById("mensagemCorreta2").style.display = "block";
+                document.getElementById("mensagemErro2").style.display = "none";
+                document.getElementById("botaoEnigma2").style.display = "none";
+                document.getElementById("botaoEnigma3").style.display = "inline-block";
+            }
+        }
+        
+        function exibirEnigma3() {
+            var resposta = prompt("Responda a este enigma: Qual é o nome codificado de '456123'?");
+            if (resposta.toLowerCase() !== "ellen" && resposta.toLowerCase() !== "ayumie") {
+                tentativas++;
+                verificarTentativas();
+                document.getElementById("mensagemErro3").style.display = "block";
+                document.getElementById("mensagemCorreta3").style.display = "none";
+            } else {
+                document.getElementById("mensagemCorreta3").style.display = "block";
+                document.getElementById("mensagemErro3").style.display = "none";
+                document.getElementById("botaoEnigma3").style.display = "none";
+                document.getElementById("mensagemFinal").style.display = "block";
+            }
+        }
+        
+        function verificarTentativas() {
+            if (tentativas >= 4) {
+                alert("Você foi morto por irasienqmlen");
+            }
+        }
+    </script>
+</body>
+</html>
